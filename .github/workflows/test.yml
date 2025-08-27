@@ -1,11 +1,12 @@
-name: test
+name: Tests & QA
 
 on:
   push:
     branches:
-      - main
+      - '**'
   pull_request:
-  merge_group:
+    branches:
+      - '**'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
