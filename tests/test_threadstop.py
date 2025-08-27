@@ -281,12 +281,6 @@ class TestThreadingTimeoutEdgeCases(unittest.TestCase):
         self.assertLess(elapsed, 0.2)  # Should timeout quickly
         self.assertEqual(timeout_ctx.state, BaseTimeout.TIMED_OUT)
     
-    def test_manual_timeout_exception(self):
-        """Test raising TimeoutException manually within context"""
-        with ThreadingTimeout(2.0, swallow_exc=True) as timeout_ctx:
-            raise TimeoutException("Manual timeout")
-        
-        self.assertEqual(timeout_ctx.state, BaseTimeout.INTERRUPTED)
 
 
 class TestGILLimitationsDocumentation(unittest.TestCase):

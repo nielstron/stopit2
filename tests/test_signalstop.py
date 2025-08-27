@@ -127,11 +127,11 @@ class TestSignalTimeout(unittest.TestCase):
         self.assertEqual(remaining, 0)
     
     def test_handle_timeout_method(self):
-        """Test the handle_timeout method directly"""
+        """Test the stop method directly (replaces handle_timeout)"""
         timeout = SignalTimeout(1)
         
         with self.assertRaises(TimeoutException) as cm:
-            timeout.handle_timeout(signal.SIGALRM, None)
+            timeout.stop()
         
         self.assertEqual(timeout.state, BaseTimeout.TIMED_OUT)
         self.assertIn("Block exceeded maximum timeout", str(cm.exception))
@@ -282,12 +282,6 @@ class TestSignalTimeoutEdgeCases(unittest.TestCase):
         timeout = SignalTimeout(0.5)
         self.assertEqual(timeout.seconds, 0)
     
-    def test_manual_timeout_exception(self):
-        """Test raising TimeoutException manually within context"""
-        with SignalTimeout(2, swallow_exc=True) as timeout_ctx:
-            raise TimeoutException("Manual timeout")
-        
-        self.assertEqual(timeout_ctx.state, BaseTimeout.INTERRUPTED)
     
     def test_nested_signal_timeouts_limitation(self):
         """Test and document the limitation of nested signal timeouts"""

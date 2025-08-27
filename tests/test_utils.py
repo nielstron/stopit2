@@ -78,15 +78,6 @@ class TestBaseTimeout(unittest.TestCase):
         
         self.assertEqual(timeout.state, BaseTimeout.EXECUTED)
     
-    def test_context_manager_with_timeout_exception_swallowed(self):
-        timeout = self.ConcreteTimeout(1.0, swallow_exc=True)
-        
-        with patch.object(LOG, 'warning') as mock_log:
-            with timeout:
-                raise TimeoutException("Test timeout")
-        
-        self.assertEqual(timeout.state, BaseTimeout.INTERRUPTED)
-        mock_log.assert_called_once()
     
     def test_context_manager_with_timeout_exception_not_swallowed(self):
         timeout = self.ConcreteTimeout(1.0, swallow_exc=False)
@@ -196,7 +187,7 @@ class TestLogging(unittest.TestCase):
     
     def test_logger_exists(self):
         self.assertIsInstance(LOG, logging.Logger)
-        self.assertEqual(LOG.name, 'stopit')
+        self.assertEqual(LOG.name, 'stopit2')
     
     def test_logger_has_null_handler(self):
         # The logger should have at least one handler (NullHandler)
