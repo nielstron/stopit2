@@ -8,8 +8,8 @@ import time
 import threading
 from unittest.mock import patch, Mock
 
-from stopit.threadstop import async_raise, ThreadingTimeout, threading_timeoutable
-from stopit.utils import TimeoutException, BaseTimeout
+from stopit2.threadstop import async_raise, ThreadingTimeout, threading_timeoutable
+from stopit2.utils import TimeoutException, BaseTimeout
 
 
 def cpu_bound_work(duration):

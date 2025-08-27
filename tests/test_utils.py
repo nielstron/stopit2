@@ -7,7 +7,7 @@ import unittest
 import logging
 from unittest.mock import patch
 
-from stopit.utils import TimeoutException, BaseTimeout, base_timeoutable, LOG
+from stopit2.utils import TimeoutException, BaseTimeout, base_timeoutable, LOG
 
 
 class TestTimeoutException(unittest.TestCase):

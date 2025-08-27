@@ -8,8 +8,8 @@ import time
 import threading
 import os
 
-import stopit
-from stopit import (
+import stopit2 as stopit
+from stopit2 import (
     ThreadingTimeout, SignalTimeout, 
     threading_timeoutable, signal_timeoutable,
     TimeoutException, async_raise

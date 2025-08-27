@@ -9,8 +9,8 @@ import signal
 import sys
 import os
 
-from stopit.signalstop import SignalTimeout, signal_timeoutable
-from stopit.utils import TimeoutException, BaseTimeout
+from stopit2.signalstop import SignalTimeout, signal_timeoutable
+from stopit2.utils import TimeoutException, BaseTimeout
 
 
 def cpu_bound_work(duration):
